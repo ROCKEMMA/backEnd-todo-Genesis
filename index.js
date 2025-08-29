@@ -1,14 +1,17 @@
 require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 
-const app = express();
+const app = express();  
 
 app.use(cors({
     origin: "*",
     methods: ['GET','POST','OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+app.use(express.json());
 
 const getTablas = require('./routes/get/obtenerTablas');
 app.use(getTablas);
@@ -17,7 +20,7 @@ const getTareas = require('./routes/get/obtenerTareas');
 app.use(getTareas);
 
 app.get('/', (req, res) => {
-    res.send("✅ Backend funcionando en Render");
+    res.send("✅ Backend funcionando en Render - Usa /tareas para obtener datos");
 });
 
 const PORT = process.env.PORT || 3000;
