@@ -1,5 +1,4 @@
-/* const db = require('./config/database');
- */require('dotenv').config();
+require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
@@ -12,25 +11,19 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-//RUTAS TIPO GET
+// RUTAS TIPO GET
 const getTablas = require('./routes/get/obtenerTablas');
 app.use(getTablas);
 
 const getTareas = require('./routes/get/obtenerTareas');
 app.use(getTareas);
 
-
-
-// MIS RUTAS MIDDLEWARE
-/* app.get('/',(req,res)=>{
-
-    let consulta = db.query('SHOW TABLES')
-    res.send("Mi backEnd con ExpressJS");
+// RUTA RAÍZ (para que no de 404 en /)
+app.get('/', (req, res) => {
+    res.send("✅ Backend funcionando en Render");
 });
- */
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT,()=>{
-    console.log(`Servidor: http://localhost:${PORT}`);
-})
-
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
