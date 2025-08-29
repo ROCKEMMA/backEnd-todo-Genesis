@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/tareas',async(req,res)=>{
     try {
         
-          let [todasLasTareas] = await db.query(`
+   let [todasLasTareas] = await db.query(`
             SELECT
                 id,
                 nombre,
@@ -15,8 +15,7 @@ router.get('/tareas',async(req,res)=>{
                 DATE_FORMAT(fecha_entrega, '%Y-%m-%d') AS fecha_entrega,
                 estado_artivado,
                 usuario_id
-            FROM tareas`);
-        res.json(todasLasTareas);
+            FROM tareas`);        res.json(todasLasTareas);
 
     } catch (error) {
         console.error("Error: ", error);
