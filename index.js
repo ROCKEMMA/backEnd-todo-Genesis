@@ -1,9 +1,8 @@
 require('dotenv').config();
-
 const express = require('express');
 const cors = require('cors');
 
-const app = express();  
+const app = express();
 
 app.use(cors({
     origin: "*",
@@ -11,14 +10,12 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// RUTAS TIPO GET
 const getTablas = require('./routes/get/obtenerTablas');
 app.use(getTablas);
 
 const getTareas = require('./routes/get/obtenerTareas');
 app.use(getTareas);
 
-// RUTA RAÍZ (para que no de 404 en /)
 app.get('/', (req, res) => {
     res.send("✅ Backend funcionando en Render");
 });
