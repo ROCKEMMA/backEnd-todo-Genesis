@@ -12,7 +12,6 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-//RUTAS TIPO GET
 const getTablas = require('./routes/get/obtenerTablas');
 app.use(getTablas);
 
